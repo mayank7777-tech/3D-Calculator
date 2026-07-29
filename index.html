@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS 3D Animated Calculator</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body data-theme="cyberpunk">
+  <!-- Fullscreen 3D WebGL Canvas Container -->
+  <div id="webgl-container"></div>
+
+  <!-- HUD Navigation & Header Bar -->
+  <header class="hud-header">
+    <div class="brand">
+      <div class="logo-glow"></div>
+      <span class="brand-name">NEXUS<span class="highlight">3D</span></span>
+      <span class="version-tag">PRO v3.6</span>
+    </div>
+
+    <!-- Controls Toolbar -->
+    <div class="hud-toolbar">
+      <!-- Camera Presets -->
+      <div class="cam-presets">
+        <button class="cam-btn active" data-preset="iso" title="Isometric View">
+          <span class="icon">📐</span> <span>Isometric</span>
+        </button>
+        <button class="cam-btn" data-preset="top" title="Top Down View">
+          <span class="icon">⬇️</span> <span>Top</span>
+        </button>
+        <button class="cam-btn" data-preset="front" title="Front View">
+          <span class="icon">🖥️</span> <span>Front</span>
+        </button>
+        <button class="cam-btn" data-preset="close" title="Close Up View">
+          <span class="icon">🔍</span> <span>Macro</span>
+        </button>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Theme Switcher -->
+      <div class="theme-picker">
+        <label for="theme-select">Theme</label>
+        <select id="theme-select" class="hud-select">
+          <option value="cyberpunk">Cyberpunk Neon</option>
+          <option value="stealth">Stealth Dark</option>
+          <option value="synthwave">Synthwave 80s</option>
+          <option value="appleglass">Apple Glass</option>
+        </select>
+      </div>
+
+      <!-- Sound Toggle -->
+      <button id="audio-toggle" class="hud-icon-btn active" title="Toggle Sound Effects">
+        <span class="icon">🔊</span>
+      </button>
+
+      <!-- History Drawer Toggle -->
+      <button id="history-toggle" class="hud-icon-btn" title="View History Tape">
+        <span class="icon">📜</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 3D Orbit Controls Hint Footer -->
+  <div class="controls-hint">
+    <span class="hint-item"><span class="key-badge">Left Click + Drag</span> Rotate 3D</span>
+    <span class="hint-item"><span class="key-badge">Right Click + Drag</span> Pan</span>
+    <span class="hint-item"><span class="key-badge">Scroll</span> Zoom</span>
+    <span class="hint-item"><span class="key-badge">Click 3D Keys</span> Operate</span>
+  </div>
+
+  <!-- Floating Hybrid HUD Side Panel for 2D Quick Entry / Mobile -->
+  <div class="hud-side-panel">
+    <div class="hud-display-container">
+      <div class="hud-status-bar">
+        <span id="hud-badge-deg" class="hud-badge">DEG</span>
+        <span id="hud-badge-mem" class="hud-badge mem" style="display:none;">M</span>
+      </div>
+      <div id="hud-sub-display" class="hud-sub-display"></div>
+      <div id="hud-main-display" class="hud-main-display">0</div>
+    </div>
+
+    <!-- 2D Mini Keypad Grid -->
+    <div id="hud-keypad" class="hud-keypad-grid"></div>
+  </div>
+
+  <!-- History Drawer Panel -->
+  <div id="history-drawer" class="history-drawer">
+    <div class="drawer-header">
+      <h3>Calculation History</h3>
+      <button id="clear-history-btn" class="clear-btn">Clear All</button>
+    </div>
+    <div id="history-list" class="history-list">
+      <div class="empty-history">No calculation history yet</div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="toast"></div>
+
+  <!-- Main Vite Module Entry -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
